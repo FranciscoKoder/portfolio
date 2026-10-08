@@ -1,0 +1,157 @@
+/* ==========================================================================
+   DESIGN TOKENS — Portfólio Vitor Francisco
+   Conceito: "datasheet". Papel e tinta, linhas finas, uma única cor de sinal.
+   Regra de ouro: componentes usam só tokens SEMÂNTICOS (--color-*, --space-*),
+   nunca valores soltos. Documentação completa em DESIGN-SYSTEM.md.
+   ========================================================================== */
+
+:root {
+  /* ---------- Tipografia: famílias ---------- */
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* ---------- Tipografia: escala (fluida nos tamanhos grandes) ---------- */
+  --text-2xs: 0.6875rem;                                      /* 11px — rótulos mono */
+  --text-xs: 0.75rem;                                         /* 12px */
+  --text-sm: 0.875rem;                                        /* 14px */
+  --text-base: 1rem;                                          /* 16px */
+  --text-md: 1.125rem;                                        /* 18px */
+  --text-lg: 1.375rem;                                        /* 22px */
+  --text-xl: clamp(1.625rem, 1.35rem + 1.2vw, 2.125rem);      /* 26 → 34px */
+  --text-2xl: clamp(2rem, 1.5rem + 2.4vw, 3.25rem);           /* 32 → 52px */
+  --text-display: clamp(2.5rem, 1.6rem + 4.4vw, 5rem);        /* 40 → 80px */
+
+  /* ---------- Tipografia: pesos, entrelinha, espaçamento ---------- */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  --leading-tight: 1.05;
+  --leading-snug: 1.25;
+  --leading-normal: 1.6;
+
+  --tracking-tight: -0.035em;    /* títulos grandes */
+  --tracking-snug: -0.015em;     /* subtítulos */
+  --tracking-wide: 0.08em;       /* rótulos mono em caixa alta */
+
+  /* ---------- Espaçamento (grade de 4px) ---------- */
+  --space-1: 0.25rem;   /* 4 */
+  --space-2: 0.5rem;    /* 8 */
+  --space-3: 0.75rem;   /* 12 */
+  --space-4: 1rem;      /* 16 */
+  --space-5: 1.25rem;   /* 20 */
+  --space-6: 1.5rem;    /* 24 */
+  --space-8: 2rem;      /* 32 */
+  --space-10: 2.5rem;   /* 40 */
+  --space-12: 3rem;     /* 48 */
+  --space-16: 4rem;     /* 64 */
+  --space-20: 5rem;     /* 80 */
+  --space-24: 6rem;     /* 96 */
+  --space-32: 8rem;     /* 128 */
+
+  --space-section: clamp(var(--space-20), 12vw, var(--space-32));
+
+  /* ---------- Layout ---------- */
+  --container-max: 70rem;                       /* 1120px */
+  --gutter: clamp(1rem, 4vw, 2rem);             /* 16 → 32px */
+  --measure: 62ch;                              /* largura máxima de parágrafo */
+  --header-height: 4rem;
+
+  /* ---------- Raio ---------- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 999px;
+
+  /* ---------- Movimento ---------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 600ms;
+
+  /* ---------- Camadas ---------- */
+  --z-header: 50;
+
+  /* ======================================================================
+     CORES — tema claro (padrão)
+     ====================================================================== */
+  color-scheme: light;
+
+  --color-bg: #f7f7f5;            /* papel */
+  --color-surface: #ffffff;       /* cartões */
+  --color-surface-2: #efeeeb;     /* hover, blocos de código */
+  --color-border: #e3e2de;        /* linha fina */
+  --color-border-strong: #cbc9c3; /* linha de ênfase */
+
+  --color-text: #111113;          /* tinta */
+  --color-text-muted: #4f4e4a;    /* texto secundário — 7.8:1 no papel */
+  --color-text-subtle: #6e6d68;   /* metadados — 4.8:1 no papel (evite sobre surface-2) */
+
+  --color-accent: #0a7563;        /* sinal — 5.2:1 no papel */
+  --color-accent-hover: #075c4e;
+  --color-on-accent: #ffffff;
+  --color-accent-soft: color-mix(in oklab, var(--color-accent) 10%, transparent);
+
+  --color-inverse: var(--color-text);   /* botão primário: tinta */
+  --color-on-inverse: var(--color-bg);
+
+  --color-danger: #b42318;
+  --color-warning: #a15c07;
+
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent);
+}
+
+/* ---------- Tema escuro: segue o sistema, a menos que o usuário escolha claro ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --color-bg: #0d0e10;
+    --color-surface: #141518;
+    --color-surface-2: #1b1d20;
+    --color-border: #26282c;
+    --color-border-strong: #3a3d42;
+
+    --color-text: #ededea;
+    --color-text-muted: #a6a5a0;
+    --color-text-subtle: #8c8b86;
+
+    --color-accent: #3dd6b5;
+    --color-accent-hover: #6ee3c9;
+    --color-on-accent: #04211b;
+
+    --color-danger: #ff7a6b;
+    --color-warning: #f5b454;
+  }
+}
+
+/* ---------- Tema escuro forçado pelo botão ---------- */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #0d0e10;
+  --color-surface: #141518;
+  --color-surface-2: #1b1d20;
+  --color-border: #26282c;
+  --color-border-strong: #3a3d42;
+
+  --color-text: #ededea;
+  --color-text-muted: #a6a5a0;
+  --color-text-subtle: #8c8b86;
+
+  --color-accent: #3dd6b5;
+  --color-accent-hover: #6ee3c9;
+  --color-on-accent: #04211b;
+
+  --color-danger: #ff7a6b;
+  --color-warning: #f5b454;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}

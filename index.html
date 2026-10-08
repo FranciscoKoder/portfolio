@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vitor Francisco — Desenvolvedor Full Stack</title>
+    <meta
+      name="description"
+      content="Portfólio de Vitor Francisco, desenvolvedor full stack focado em sistemas embarcados e APIs REST: do firmware no ESP32 à interface web."
+    />
+    <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d0e10" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Vitor Francisco — Desenvolvedor Full Stack" />
+    <meta
+      property="og:description"
+      content="Do firmware à interface: sistemas embarcados, APIs REST e painéis web."
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Aplica o tema salvo antes da primeira pintura (evita piscar o tema errado) -->
+    <script>
+      try {
+        var t = localStorage.getItem('theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
