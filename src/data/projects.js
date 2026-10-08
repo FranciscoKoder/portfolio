@@ -1,5 +1,6 @@
 // Projetos em destaque. A ordem aqui é a ordem na página.
 // Números em `metrics` vêm de medições reais documentadas nos repositórios.
+// `links` só com repositórios públicos; código fechado vai em `privateNote`.
 
 export const projects = [
   {
@@ -20,8 +21,8 @@ export const projects = [
       { value: '2', label: 'canais de OTA' },
     ],
     stack: ['C++', 'ESP32', 'FreeRTOS', 'PlatformIO', 'REST', 'React', 'MUI'],
+    privateNote: 'Firmware de controle de acesso em repositório privado do NUTES/UEPB',
     links: [
-      { label: 'Firmware SCA', href: 'https://github.com/SGQ-NUTES/sca-sqg' },
       { label: 'Firmware OTA', href: 'https://github.com/FranciscoKoder/OTA-Server-AP' },
       { label: 'Painel OTA', href: 'https://github.com/FranciscoKoder/Admin-blink-OTA' },
     ],
@@ -61,9 +62,8 @@ export const projects = [
     ],
     metrics: [],
     stack: ['React', 'Vite', 'Supabase', 'PostgreSQL', 'RLS', 'Vercel'],
-    links: [
-      { label: 'Código', href: 'https://github.com/SGQ-NUTES/SGF-Sistema_de_Gest-o_de_Fluxos' },
-    ],
+    privateNote: 'Código privado: sistema institucional do NUTES/UEPB',
+    links: [],
   },
   {
     id: 'manualbot',

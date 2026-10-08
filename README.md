@@ -3,6 +3,8 @@
 Portfólio pessoal: desenvolvedor full stack focado em sistemas embarcados e APIs REST.
 **Do firmware à interface.**
 
+**No ar:** https://franciscokoder.github.io/portfolio/
+
 **Stack:** React 19 · Vite · CSS puro com design tokens · Geist / Geist Mono · lucide-react
 
 ## Rodar localmente
@@ -41,3 +43,22 @@ src/
 ## Design system
 
 Documentado em [`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md) e visível ao vivo em `/#/design-system`.
+
+## CI/CD e segurança
+
+O workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) roda em todo push e PR:
+
+1. `npm ci`: instala exatamente as versões do `package-lock.json`
+2. `npm audit`: barra o deploy se uma dependência de produção tiver vulnerabilidade alta ou crítica
+3. `npm run lint` e `npm run build`
+4. Só em push na `main`: publica o `dist/` no GitHub Pages
+
+Se qualquer etapa falhar, nada é publicado. Outras proteções:
+
+- **Content Security Policy** gerada no build (`vite.config.js`): o navegador só executa scripts do
+  próprio site.
+- **Permissões mínimas** no workflow: só o job de deploy pode escrever no Pages, e o checkout não
+  guarda a credencial.
+- **Dependabot** ([`.github/dependabot.yml`](.github/dependabot.yml)): PRs semanais com
+  atualizações de dependências e de actions, validadas pelo CI.
+- Site 100% estático, servido pela CDN do GitHub: sem servidor, banco ou formulário para atacar.

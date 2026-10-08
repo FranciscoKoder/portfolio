@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Lock } from 'lucide-react'
 import { Button, Card, Label, Metric, SectionHeader, StatusDot, Tag } from '../ui'
 import { projects } from '../../data/projects'
 
@@ -60,6 +60,12 @@ function ProjectCard({ project, index }) {
             {link.label}
           </Button>
         ))}
+        {project.privateNote && (
+          <span className="project__private">
+            <Lock size={13} strokeWidth={2} aria-hidden="true" />
+            {project.privateNote}
+          </span>
+        )}
       </div>
     </Card>
   )
@@ -73,7 +79,7 @@ export function Projects() {
           index="01 — Projetos"
           id="projetos-title"
           title="O que eu construí"
-          description="Projetos reais, do firmware ao navegador. Cada um resolve um problema concreto e está com o código aberto para você conferir."
+          description="Projetos reais, do firmware ao navegador. Cada um resolve um problema concreto; quando o código é aberto, o link está no cartão."
         />
         <div className="projects">
           {projects.map((project, i) => (
